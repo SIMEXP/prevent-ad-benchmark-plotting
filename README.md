@@ -13,12 +13,7 @@ Requires Python 3.14 and [uv](https://docs.astral.sh/uv/).
 uv sync
 ```
 
-`data/` is a symlink to `../prevent-ad-benchmark/outputs`. Recreate it if the
-projects live somewhere else:
-
-```bash
-ln -sfn /path/to/prevent-ad-benchmark/outputs data
-```
+`data/` can be downloaded here: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22926042.svg)](https://doi.org/10.5281/zenodo.22926042)
 
 ## Pipeline
 
