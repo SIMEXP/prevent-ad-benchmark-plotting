@@ -77,3 +77,5 @@ src/
 data -> ../prevent-ad-benchmark/outputs   (symlink, inputs)
 outputs/                                  (generated figures and tables)
 ```
+
+## Aesthetic related tweeks were done by claude.
