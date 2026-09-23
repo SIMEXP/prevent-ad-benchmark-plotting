@@ -2,7 +2,7 @@
 
 Lightweight plotting and reporting code for the PREVENT-AD foundation-model
 benchmark (BrainHarmony and BrainLM). It turns the outputs of the
-[prevent-ad-benchmark](../prevent-ad-benchmark) project into learning-curve figures,
+[prevent-ad-benchmark](github.com/SIMEXP/prevent-ad-benchmark) project into learning-curve figures,
 a downstream-task summary table, and per-target comparison plots.
 
 ## Setup
