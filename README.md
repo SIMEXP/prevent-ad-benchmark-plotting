@@ -37,8 +37,8 @@ Experiments:
 
 - `baseline`: functional connectivity and timeseries features
 - `chance`: dummy classifier
-- `adaptation`: frozen foundation model
-- `transfer`: finetuned foundation model
+- `linear-probing`: frozen foundation model
+- `adaptation`: SSL adapted foundation model
 
 Statistical tests, one-sided (greater):
 

@@ -97,8 +97,8 @@ def _extract_foundation_metadata(input_dir: Path, filepath: Path, row, idx):
         timeseries_extraction = voxelwise_normalization_desc.split("_")[-1]
 
     voxelwise_normalization = "no" if "no" in voxelwise_normalization_desc else "yes"
-    # "transfer" = finetuned model, "adaptation" = frozen model
-    experiment = "transfer" if match.group(3) else "adaptation"
+    # "adaptation" = ssl adaptation model, "linear-probing" = frozen model
+    experiment = "adaptation" if match.group(3) else "linear-probing"
     foundation_model = match.group(2)
     split_idx = int(match.group(4))
     atlas = _ATLAS_MAP[foundation_model.lower()]
@@ -111,8 +111,8 @@ def _extract_foundation_metadata(input_dir: Path, filepath: Path, row, idx):
     if classifier == "svm":
         return None
     # the modality-specific encoders (T1, fMRI mean-pooling) are never finetuned,
-    # so "transfer" rows for them just repeat the frozen ones
-    if experiment == "transfer" and feature in ("t1_mean", "fmri_mean"):
+    # so "adaptation" rows for them just repeat the frozen ones
+    if experiment == "adaptation" and feature in ("t1_mean", "fmri_mean"):
         return None
 
     return {

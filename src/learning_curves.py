@@ -246,7 +246,7 @@ def _draw_grid(conditions, output_file, style: GridStyle, transpose=False):
                     va="bottom",
                     ha="left",
                 )
-        fig.suptitle("Fine Tuning Learning Curves", y=1.03, fontsize=style.title_fontsize)
+        fig.suptitle("Self-Supervised Adaptation Learning Curves", y=1.03, fontsize=style.title_fontsize)
         fig.legend(
             *_legend_handles_and_labels(),
             loc="upper center",

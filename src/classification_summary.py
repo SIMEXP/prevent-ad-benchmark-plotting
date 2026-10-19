@@ -9,8 +9,8 @@ Three figure types (see `main` for the files written):
   - `plot_baseline_comparison`: the non-foundation-model baselines across targets.
 
 How a foundation-model bar is drawn:
-  - color = foundation model; hatched = fine-tuned ("transfer"), plain = frozen
-    ("adaptation")
+  - color = foundation model; hatched = ssl updated ("adaptation"), plain = frozen
+    ("linear probing")
   - faded = its mean is below the dummy classifier's chance level
   - whisker = 95% CI of the mean over splits
   - "*" = significantly above the functional connectivity baseline (only shown
@@ -49,7 +49,7 @@ COLOR_FC = "#2a78d6"  # functional connectivity CI band, and its bar in the base
 COLOR_TIMESERIES = "#9467bd"
 MODEL_COLORS = {"brainharmonix": "#eda100", "brainlm650M": "#1baf7a"}
 
-HATCH_TRANSFER = "////"
+HATCH_SSL= "////"
 BELOW_CHANCE_ALPHA = 0.5
 CI_BAND_ALPHA = 0.15
 BAR_HEIGHT = 0.5
@@ -127,8 +127,8 @@ def _style_bars(ax, ranking, key):
     for patch, row in _bar_row_indices(ax):
         if not 0 <= row < len(bars):
             continue
-        if bars.iloc[row]["Experiment"] == "transfer":
-            patch.set_hatch(HATCH_TRANSFER)
+        if bars.iloc[row]["Experiment"] == "adaptation":
+            patch.set_hatch(HATCH_SSL)
             patch.set_edgecolor("black")
             patch.set_linewidth(0.5)
         if bars.iloc[row][key] < ranking.dummy[key]:
@@ -177,8 +177,8 @@ def _add_model_legend(fig, models, fontsize, anchor_y):
             "Dummy classifier (chance level)",
         ),
         *[(plt.Rectangle((0, 0), 1, 1, color=MODEL_COLORS[m]), m) for m in models],
-        (plt.Rectangle((0, 0), 1, 1, **grey), "Adaptation (frozen)"),
-        (plt.Rectangle((0, 0), 1, 1, hatch=HATCH_TRANSFER, **grey), "Transfer (fine-tuned)"),
+        (plt.Rectangle((0, 0), 1, 1, **grey), "Linear-probing (frozen)"),
+        (plt.Rectangle((0, 0), 1, 1, hatch=HATCH_SSL, **grey), "Adaptation (SSL)"),
     ]
     handles, labels = zip(*entries)
     fig.legend(

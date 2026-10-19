@@ -6,8 +6,8 @@ metric, its mean over splits (`ACCURACY`), a 95% CI (`ACCURACY_CI_LOW/HIGH`) and
 tests against the reference classifiers (`ACCURACY_SIG_VS_FC`, ...).
 
 Experiments:
-  - "adaptation": frozen foundation model
-  - "transfer":   fine-tuned foundation model
+  - "linear-probing": frozen foundation model
+  - "adaptation":   SSL adaptation foundation model
   - "baseline":   non-foundation-model features (functional connectivity,
                   timeseries)
   - "chance":     dummy classifier
